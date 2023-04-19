@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <regex>
+using namespace std;
+
+int main() {
+    string s("This is a test");
+    std::regex resplit("\\s+");
+    auto rit=std::sregex_token_iterator(s.begin(), s.end(), resplit,-1);
+    auto rend=std::sregex_token_iterator();
+    vector<string> vec(rit, rend);
+
+    vector<string> vec1(sregex_token_iterator(s.begin(), s.end(), resplit,-1), sregex_token_iterator());
+
+    for (auto ele:vec) {
+        cout<<ele<< "-";
+    }
+    cout << endl;
+
+    for (auto ele:vec1) {
+        cout<<ele<< "-";
+    }
+    cout << endl;
+
+
+    return 0;
+}
