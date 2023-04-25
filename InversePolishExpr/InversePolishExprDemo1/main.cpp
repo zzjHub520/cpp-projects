@@ -9,9 +9,9 @@ bool IsDigit(const char &c) {
     return false;
 }
 
-double Calc(string exprStr);
+double Calc(const string exprStr);
 
-double SubCalc(string &exprStr, int idx, const char &op) {
+double SubCalc(const string &exprStr, int idx, const char &op) {
     string subStrL = exprStr.substr(0, idx);
     string subStrR = exprStr.substr(idx + 1);
     switch (op) {
@@ -28,27 +28,30 @@ double SubCalc(string &exprStr, int idx, const char &op) {
     }
 }
 
-double Calc(string exprStr) {
+double Calc(const string exprStr) {
     int startIdx = exprStr.find_last_of('(');
     if (startIdx != string::npos) {
         int endIdx = exprStr.substr(startIdx).find_first_of(')');
         string subStrL = exprStr.substr(0, startIdx);
         string subStrR = exprStr.substr(endIdx + 1);
-        string subStrData = exprStr.substr(startIdx + 1, endIdx);
+        string subStrData = exprStr.substr(startIdx + 1, endIdx - startIdx - 1);
         return Calc(subStrL + to_string(Calc(subStrData)) + subStrR);
     }
 
     string opList{"-+*/"};
     for (auto &op: opList) {
-        int idx=exprStr.find_first_of(op);
-        if()
+        int idx = exprStr.find_first_of(op);
+        if (idx != string::npos && idx != 0 && IsDigit(exprStr[idx - 1])) {
+            return SubCalc(exprStr,idx,op);
+        }
     }
 
-    return 0.0;
+    return stod(exprStr);
 
 }
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    string str{"((1+2)*2)*(3+4)"};
+    cout << Calc(str);
     return 0;
 }
