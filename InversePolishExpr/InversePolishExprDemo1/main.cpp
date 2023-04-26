@@ -31,7 +31,7 @@ double SubCalc(const string &exprStr, int idx, const char &op) {
 double Calc(const string exprStr) {
     int startIdx = exprStr.find_last_of('(');
     if (startIdx != string::npos) {
-        int endIdx = exprStr.substr(startIdx).find_first_of(')');
+        int endIdx = exprStr.substr(startIdx).find_first_of(')')+startIdx;
         string subStrL = exprStr.substr(0, startIdx);
         string subStrR = exprStr.substr(endIdx + 1);
         string subStrData = exprStr.substr(startIdx + 1, endIdx - startIdx - 1);
@@ -51,7 +51,7 @@ double Calc(const string exprStr) {
 }
 
 int main() {
-    string str{"((1+2)*2)*(3+4)"};
+    string str{"((1+2))*(3+4)"};
     cout << Calc(str);
     return 0;
 }
