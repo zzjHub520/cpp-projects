@@ -9,7 +9,7 @@ bool IsDigit(const char &c) {
     return false;
 }
 
-double Calc(const string exprStr);
+double Calc(const string &exprStr);
 
 double SubCalc(const string &exprStr, int idx, const char &op) {
     string subStrL = exprStr.substr(0, idx);
@@ -28,10 +28,10 @@ double SubCalc(const string &exprStr, int idx, const char &op) {
     }
 }
 
-double Calc(const string exprStr) {
+double Calc(const string &exprStr) {
     int startIdx = exprStr.find_last_of('(');
     if (startIdx != string::npos) {
-        int endIdx = exprStr.substr(startIdx).find_first_of(')')+startIdx;
+        int endIdx = exprStr.substr(startIdx).find_first_of(')') + startIdx;
         string subStrL = exprStr.substr(0, startIdx);
         string subStrR = exprStr.substr(endIdx + 1);
         string subStrData = exprStr.substr(startIdx + 1, endIdx - startIdx - 1);
@@ -42,7 +42,7 @@ double Calc(const string exprStr) {
     for (auto &op: opList) {
         int idx = exprStr.find_first_of(op);
         if (idx != string::npos && idx != 0 && IsDigit(exprStr[idx - 1])) {
-            return SubCalc(exprStr,idx,op);
+            return SubCalc(exprStr, idx, op);
         }
     }
 
