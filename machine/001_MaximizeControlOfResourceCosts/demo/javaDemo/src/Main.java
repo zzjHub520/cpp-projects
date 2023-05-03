@@ -1,14 +1,13 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static int max_machine;
 
     public static void main(String[] args) {
         //处理输入
-        Scanner in = new Scanner(System.in);
+        Scanner in=new Scanner(System.in);
         int taskNum = in.nextInt();
 
         //构造输入数据结构
@@ -41,33 +40,34 @@ public class Main {
         Comparator<ArrayList<Integer>> myComparator = new Comparator<ArrayList<Integer>>() {
             @Override
             public int compare(ArrayList<Integer> o1, ArrayList<Integer> o2) {
-                if (o1.get(0) != o2.get(0)) {
-                    return o1.get(0) - o2.get(0);
-                } else {
-                    return o1.get(1) - o2.get(2);
+                if (o1.get(0)!=o2.get(0)){
+                    return o1.get(0)-o2.get(0);
+                }else {
+                    return o1.get(1)-o2.get(2);
                 }
             }
         };
         Collections.sort(ranges, myComparator);
 
         //求交集
-        ArrayList<ArrayList<Integer>> public_range = new ArrayList<ArrayList<Integer>>();
-        for (int i = 0; i < ranges.size(); i++) {
-            for (int j = i + 1; j < ranges.size(); j++) {
+        ArrayList<ArrayList<Integer>> public_range = new ArrayList<ArrayList<Integer>> ();
+        for (int i=0;i<ranges.size();i++) {
+            for (int j=i+1;j<ranges.size();j++) {
                 int left = Math.max(ranges.get(i).get(0), ranges.get(j).get(0));
                 int right = Math.min(ranges.get(i).get(1), ranges.get(j).get(1));
                 if (left <= right) {
                     ArrayList<Integer> temp = new ArrayList<Integer>();
                     temp.add(left);
                     temp.add(right);
-                    temp.add(ranges.get(i).get(2) + ranges.get(j).get(2));
+                    temp.add(ranges.get(i).get(2)+ ranges.get(j).get(2));
                     public_range.add(temp);
-                    if (ranges.get(i).get(2) + ranges.get(j).get(2) > max_machine) {
-                        max_machine = ranges.get(i).get(2) + ranges.get(j).get(2);
+                    if (ranges.get(i).get(2)+ ranges.get(j).get(2) > max_machine) {
+                        max_machine = ranges.get(i).get(2)+ ranges.get(j).get(2);
                     }
                 }
             }
         }
         return public_range;
     }
+
 }
