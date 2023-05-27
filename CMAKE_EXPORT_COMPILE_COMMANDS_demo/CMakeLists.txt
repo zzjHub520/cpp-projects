@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.24)
+project(CMAKE_EXPORT_COMPILE_COMMANDS_demo)
+include_directories(${CMAKE_BINARY_DIR})
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+configure_file(compile_commands.json input.txt COPYONLY)
+add_executable(CMAKE_EXPORT_COMPILE_COMMANDS_demo main.cpp)

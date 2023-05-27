@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/mnt/d/Documents/workspaces/cpp/GitHub/cpp-projects/CMAKE_EXPORT_COMPILE_COMMANDS_demo/cmake-build-debug",
+  "command": "/usr/bin/c++   -g -fdiagnostics-color=always -o CMakeFiles/CMAKE_EXPORT_COMPILE_COMMANDS_demo.dir/main.cpp.o -c /mnt/d/Documents/workspaces/cpp/GitHub/cpp-projects/CMAKE_EXPORT_COMPILE_COMMANDS_demo/main.cpp",
+  "file": "/mnt/d/Documents/workspaces/cpp/GitHub/cpp-projects/CMAKE_EXPORT_COMPILE_COMMANDS_demo/main.cpp"
+}
+]
