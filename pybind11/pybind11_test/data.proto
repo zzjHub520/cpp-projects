@@ -1,0 +1,11 @@
+syntax = "proto3";
+/* option optimize_for = LITE_RUNTIME; */
+package protoTest;
+
+/* 矩形 */
+message Rect {
+    int32 x1 = 1; //矩形左上角的X坐标
+    int32 y1 = 2; //矩形左上角的Y坐标
+    int32 x2 = 3; //矩形右下角的X坐标
+    int32 y2 = 4; //矩形右下角的Y坐标
+}

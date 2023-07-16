@@ -1,0 +1,6 @@
+syntax = "proto2";
+message TextInfo {
+  required string text1 = 1;  // text1
+  optional string text2 = 2;  // text2
+  repeated int32 text_cnt = 3; // text 个数
+};
