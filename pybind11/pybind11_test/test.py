@@ -1,4 +1,7 @@
 import example
+# import proto.demo_pb2
+
+print("==========")
 
 print(example.add(2, 2))
 
